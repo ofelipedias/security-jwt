@@ -1,0 +1,3 @@
+CREATE SCHEMA IF NOT EXISTS security AUTHORIZATION admin;
+CREATE TABLESPACE tsd01 LOCATION '/tablespace/data';
+CREATE TABLESPACE tsi01 LOCATION '/tablespace/index';

@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  db-security:
+    build:
+      context: .
+    container_name: security_db
+    image: security_db
+    ports:
+      - "5432:5432"
+    networks:
+      - local
+
+# Rede local para comunicacao dos containers
+networks:
+  local:
+    driver: bridge
