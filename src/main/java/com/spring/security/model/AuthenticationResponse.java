@@ -1,11 +1,11 @@
 package com.spring.security.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthenticationResponse {
 
-    private final String jwt;
+    private String token;
 }
