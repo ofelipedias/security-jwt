@@ -1,4 +1,4 @@
-FROM postgres
+FROM postgres:9.4.12-alpine
 EXPOSE 5432
 
 ENV POSTGRES_USER admin
