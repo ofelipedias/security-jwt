@@ -14,20 +14,16 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "user_role")
+public class UserRole {
 
     @Id
     @GeneratedValue
     private BigDecimal id;
 
-    private String name;
-
-    private String password;
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user")
-    private List<UserRole> userRoles;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Role role;
 
     @Column(name = "dat_create")
     private LocalDateTime creationDate;

@@ -1,6 +1,8 @@
 package com.spring.security.service.impl;
 
+import com.spring.security.model.Role;
 import com.spring.security.model.User;
+import com.spring.security.model.UserRole;
 import com.spring.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -36,8 +39,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private Collection<? extends GrantedAuthority> getRolesByUser(User user) {
         log.info("Get roles by username={}", user.getName());
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        List<String> permissions = Collections.singletonList("ROLE_ADMIN"); // TODO criar e buscar no banco as roles
-        permissions.forEach(p -> authorities.add(new SimpleGrantedAuthority(p.toUpperCase())));
+        user.getUserRoles().stream()
+                .map(UserRole::getRole)
+                .map(Role::getName)
+                .forEach(role -> authorities.add(new SimpleGrantedAuthority(role.toUpperCase())));
         return authorities;
     }
 }

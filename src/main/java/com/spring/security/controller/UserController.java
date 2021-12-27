@@ -1,4 +1,4 @@
-package com.spring.security.rest.controller;
+package com.spring.security.controller;
 
 import com.spring.security.exception.UserNotFoundException;
 import com.spring.security.model.User;

@@ -1,4 +1,4 @@
-package com.spring.security.rest;
+package com.spring.security.controller;
 
 import com.spring.security.exception.UserNotFoundException;
 import com.spring.security.model.ApiError;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity handleNotFoundException() {
