@@ -26,15 +26,17 @@ public class User {
 
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_user")
-    private List<UserRole> userRoles;
-
     @Column(name = "dat_create")
     private LocalDateTime creationDate;
 
     @Column(name = "dat_update")
     private LocalDateTime updateDate;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role"))
+    private List<Role> userRoles;
 
     @PrePersist
     private void prePersist() {

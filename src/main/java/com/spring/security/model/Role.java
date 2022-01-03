@@ -18,7 +18,7 @@ import java.util.List;
 public class Role {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigDecimal id;
 
     private String name;
@@ -28,4 +28,5 @@ public class Role {
 
     @Column(name = "dat_update")
     private LocalDateTime updateDate;
+
 }

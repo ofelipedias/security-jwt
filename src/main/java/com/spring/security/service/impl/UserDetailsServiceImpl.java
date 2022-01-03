@@ -2,7 +2,6 @@ package com.spring.security.service.impl;
 
 import com.spring.security.model.Role;
 import com.spring.security.model.User;
-import com.spring.security.model.UserRole;
 import com.spring.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -40,7 +41,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         log.info("Get roles by username={}", user.getName());
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
         user.getUserRoles().stream()
-                .map(UserRole::getRole)
                 .map(Role::getName)
                 .forEach(role -> authorities.add(new SimpleGrantedAuthority(role.toUpperCase())));
         return authorities;
